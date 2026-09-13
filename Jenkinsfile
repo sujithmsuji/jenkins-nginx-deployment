@@ -19,5 +19,11 @@ pipeline {
                 sh 'ls -lh webapp.tar.gz'
             }
         }
+
+        stage('Upload Artifact') {
+            steps {
+                sh 'aws s3 cp webapp.tar.gz s3://jenkins-nginx-deploy-162331/webapp.tar.gz'
+            }
+        }
     }
 }
